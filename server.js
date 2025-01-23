@@ -13,10 +13,12 @@ app.use(bodyParser.json());
 // Import Routes
 const inventoryRoutes = require('./routes/inventory');
 const salesRoutes = require('./routes/sales');
+const tabRoutes = require('./routes/tab');
 
 // Use Routes
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/sales', salesRoutes);
+app.use('/api/tab', tabRoutes)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
