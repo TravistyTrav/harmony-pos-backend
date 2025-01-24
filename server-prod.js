@@ -3,9 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const fs = require('fs');
-const https = require('https');
-const http = require('http');
 const { db } = require('./firebase/firebase-config');
 
 const app = express();
@@ -28,20 +25,8 @@ app.use('/api/tab', tabRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/tags', tagsRoutes);
 
-// HTTP-to-HTTPS Redirect
-http.createServer((req, res) => {
-  res.writeHead(301, { Location: `https://${req.headers.host}${req.url}` });
-  res.end();
-}).listen(80, () => console.log('HTTP redirect server running on port 80'));
-
-// HTTPS Options (Ensure permissions for reading cert files)
-const httpsOptions = {
-  key: fs.readFileSync('/etc/letsencrypt/live/strida.io/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/strida.io/fullchain.pem'),
-};
-
-// Start HTTPS Server
-const PORT = process.env.PORT || 443;
-https.createServer(httpsOptions, app).listen(PORT, () => {
-  console.log(`HTTPS Server running on port ${PORT}`);
+// Start Node.js server on port 3000
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Node.js server running on port ${PORT}`);
 });
