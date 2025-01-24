@@ -14,11 +14,15 @@ app.use(bodyParser.json());
 const inventoryRoutes = require('./routes/inventory');
 const salesRoutes = require('./routes/sales');
 const tabRoutes = require('./routes/tab');
+const categoriesRoutes = require('./routes/categories');
+const tagsRoutes = require('./routes/tags');
 
 // Use Routes
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/sales', salesRoutes);
 app.use('/api/tab', tabRoutes)
+app.use('/api/categories', categoriesRoutes);
+app.use('/api/tags', tagsRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
