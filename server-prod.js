@@ -36,8 +36,8 @@ http.createServer((req, res) => {
 
 // HTTPS Options
 const httpsOptions = {
-  key: fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/fullchain.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/strida.io/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/strida.io/fullchain.pem'),
 };
 
 // Start HTTPS Server
